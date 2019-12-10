@@ -25,3 +25,6 @@ When a restaurant is selected , three message is sent
 
 
 ### If the user didn't know which restaurant to select , the user can select random. The bot will randomly select a reataurant 
+
+## Using Aws to run line bot 
+![](https://i.imgur.com/91x91tF.png)
