@@ -22,4 +22,6 @@ When a restaurant is selected , three message is sent
 3)The third one is the next operation can be made
 
 ![](https://i.imgur.com/IK3mAgd.jpg)
-If the user didn't know which restaurant to select , the user can select random. The bot will randomly select a reataurant 
+
+
+### If the user didn't know which restaurant to select , the user can select random. The bot will randomly select a reataurant 
