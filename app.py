@@ -29,7 +29,7 @@ machine = TocMachine(
             "conditions": "is_going_to_Japanese_Restaurant",
         },
         {"trigger": "go_back", 
-        "source": ["Menu","Japanese_Restaurant", "Western_Restaurant","Hot_Pot"], 
+        "source": ["Menu","Japanese_Restaurant", "Western_Food","Hot_Pot"], 
         "dest": "initial"},
     ],
     initial="initial",
