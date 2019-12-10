@@ -14,25 +14,133 @@ load_dotenv()
 
 
 machine = TocMachine(
-    states=["initial","Menu", "Japanese_Restaurant", "Western_Food","Hot_Pot"],
+    states=["Menu", "Japanese_Restaurant", "JR_Jia","JR_Pork",
+    "Western_Restaurant","WR_AJ","WR_GC",
+    "Hot_Pot_Restaurant","HP_Mother","HP_Breath",
+    "Random"],
     transitions=[
-        {
-            "trigger": "advance",
-            "source": "initial",
-            "dest": "Menu",
-            "conditions": "is_going_to_Menu",
-        },
         {
             "trigger": "advance",
             "source": "Menu",
             "dest": "Japanese_Restaurant",
             "conditions": "is_going_to_Japanese_Restaurant",
         },
-        {"trigger": "go_back", 
-        "source": ["Menu","Japanese_Restaurant", "Western_Food","Hot_Pot"], 
-        "dest": "initial"},
+
+        {
+            "trigger": "advance",
+            "source": ["Random","Japanese_Restaurant"],
+            "dest": "JR_Jia",
+            "conditions": "is_going_to_JR_Jia",
+        },
+
+        {
+            "trigger": "advance",
+            "source": ["Random","Japanese_Restaurant"],
+            "dest": "JR_Pork",
+            "conditions": "is_going_to_JR_Pork",
+        },
+
+        {
+            "trigger": "advance",
+            "source": "JR_Jia",
+            "dest": "JR_Pork",
+            "conditions": "is_going_to_JR_Pork",
+        },
+
+        {
+            "trigger": "advance",
+            "source": "JR_Pork",
+            "dest": "JR_Jia",
+            "conditions": "is_going_to_JR_Jia",
+        },
+
+        {
+            "trigger": "advance",
+            "source": "Menu",
+            "dest": "Western_Restaurant",
+            "conditions": "is_going_to_Western_Restaurant",
+        },
+
+        {
+            "trigger": "advance",
+            "source": ["Random","Western_Restaurant"],
+            "dest": "WR_AJ",
+            "conditions": "is_going_to_WR_AJ",
+        },
+
+        {
+            "trigger": "advance",
+            "source": ["Random","Western_Restaurant"],
+            "dest": "WR_GC",
+            "conditions": "is_going_to_WR_GC",
+        },
+
+        {
+            "trigger": "advance",
+            "source": "WR_AJ",
+            "dest": "WR_GC",
+            "conditions": "is_going_to_WR_AJ",
+        },
+
+        {
+            "trigger": "advance",
+            "source": "WR_GC",
+            "dest": "WR_AJ",
+            "conditions": "is_going_to_WR_GC",
+        },
+
+        {
+            "trigger": "advance",
+            "source": "Menu",
+            "dest": "Hot_Pot_Restaurant",
+            "conditions": "is_going_to_Hot_Pot_Restaurant",
+        },
+
+        {
+            "trigger": "advance",
+            "source": ["Random","Hot_Pot_Restaurant"],
+            "dest": "HP_Mother",
+            "conditions": "is_going_to_HP_Mother",
+        },
+
+        {
+            "trigger": "advance",
+            "source": ["Random","Hot_Pot_Restaurant"],
+            "dest": "HP_Breath",
+            "conditions": "is_going_to_HP_Breath",
+        },
+
+        {
+            "trigger": "advance",
+            "source": "HP_Breath",
+            "dest": "HP_Mother",
+            "conditions": "is_going_to_HP_Mother",
+        },
+
+        {
+            "trigger": "advance",
+            "source": "HP_Mother",
+            "dest": "HP_Breath",
+            "conditions": "is_going_to_HP_Breath",
+        },
+
+
+        {
+            "trigger": "advance",
+            "source": ["Menu","JR_Jia","JR_Pork","WR_AJ","WR_GC","HP_Mother","HP_Breath"],
+            "dest": "Random",
+            "conditions": "is_going_to_Random",
+        },
+
+
+        {
+            "trigger": "advance",
+            "source": ["Menu","Japanese_Restaurant", "JR_Jia","JR_Pork","Western_Restaurant","WR_AJ","WR_GC","Hot_Pot_Restaurant","HP_Mother","HP_Breath"],
+            "dest": "Menu",
+            "conditions": "is_going_to_Menu",
+        },
     ],
-    initial="initial",
+    initial="Menu",
     auto_transitions=False,
     show_conditions=True,
 )
